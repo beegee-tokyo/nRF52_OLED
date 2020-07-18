@@ -32,15 +32,15 @@
 // Include the correct display library
 // For a connection via I2C using Wire include
 #include <Wire.h>			 // Only needed for Arduino 1.6.5 and earlier
-#include "nRF_SSD1306Wire.h" // legacy include: `#include "nRF_SSD1306.h"`
-// or #include "nRF_SH1106Wire.h", legacy include: `#include "nRF_SH1106.h"`
+#include <nRF_SSD1306Wire.h> // legacy include: `<include "nRF_SSD1306.h>`
+// or #include <nRF_SH1106Wire.h>, legacy include: `<include "nRF_SH1106.h>`
 // For a connection via SPI include
 // #include <SPI.h> // Only needed for Arduino 1.6.5 and earlier
-// #include "nRF_SSD1306Spi.h"
-// #include "nRF_SH1106SPi.h"
+// #include <nRF_SSD1306Spi.h>
+// #include <nRF_SH1106SPi.h>
 
 // Include the UI lib
-#include "OLEDDisplayUi.h"
+#include <OLEDDisplayUi.h>
 
 // Include custom images
 #include "images.h"
