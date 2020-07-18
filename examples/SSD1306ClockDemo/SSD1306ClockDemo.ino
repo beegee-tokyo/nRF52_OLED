@@ -48,18 +48,18 @@
 // Use the corresponding display class:
 
 // Initialize the OLED display using SPI
-// D5 -> CLK
-// D7 -> MOSI (DOUT)
-// D0 -> RES
-// D2 -> DC
-// D8 -> CS
-// SSD1306Spi        display(D0, D2, D8);
+// PIN_SPI_SCK -> CLK
+// PIN_SPI_MOSI -> MOSI (DOUT)
+// 13 -> RES
+// 14 -> DC
+// 15 -> CS
+// SSD1306Spi        display(13, 14, 15);
 // or
-// SH1106Spi         display(D0, D2);
+// SH1106Spi         display(13, 14);
 
 // Initialize the OLED display using Wire library
-SSD1306Wire display(0x3c, D3, D5);
-// SH1106 display(0x3c, D3, D5);
+SSD1306Wire display(0x3c, PIN_WIRE_SDA, PIN_WIRE_SCL);
+// SH1106 display(0x3c, PIN_WIRE_SDA, PIN_WIRE_SCL);
 
 OLEDDisplayUi ui(&display);
 

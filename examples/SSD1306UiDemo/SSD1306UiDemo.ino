@@ -31,15 +31,15 @@
  // Include the correct display library
  // For a connection via I2C using Wire include
  #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
-#include "nRF_SSD1306Wire.h" // legacy include: `#include "nRF_SSD1306.h"`
-							 // or #include "nRF_SH1106Wire.h", legacy include: `#include "nRF_SH1106.h"`
+#include <nRF_SSD1306Wire.h> // legacy include: `#include <nRF_SSD1306.h>`
+							 // or #include <nRF_SH1106Wire.h>, legacy include: `#include <nRF_SH1106.h>`
 							 // For a connection via SPI include
 							 // #include <SPI.h> // Only needed for Arduino 1.6.5 and earlier
-							 // #include "nRF_SSD1306Spi.h"
-							 // #include "nRF_SH1106SPi.h"
+							 // #include <nRF_SSD1306Spi.h>
+							 // #include <nRF_SH1106Spi.h>
 
 // Include the UI lib
-#include "OLEDDisplayUi.h"
+#include <OLEDDisplayUi.h>
 
 // Include custom images
 
@@ -48,18 +48,18 @@
 // Use the corresponding display class:
 
 // Initialize the OLED display using SPI
-// D5 -> CLK
-// D7 -> MOSI (DOUT)
-// D0 -> RES
-// D2 -> DC
-// D8 -> CS
-// SSD1306Spi        display(D0, D2, D8);
+// PIN_SPI_SCK -> CLK
+// PIN_SPI_MOSI -> MOSI (DOUT)
+// 13 -> RES
+// 14 -> DC
+// 15 -> CS
+// SSD1306Spi        display(13, 14, 15);
 // or
-// SH1106Spi         display(D0, D2);
+// SH1106Spi         display(13, 14);
 
 // Initialize the OLED display using Wire library
-SSD1306Wire  display(0x3c, D3, D5);
-// SH1106Wire display(0x3c, D3, D5);
+SSD1306Wire display(0x3c, PIN_WIRE_SDA, PIN_WIRE_SCL);
+// SH1106 display(0x3c, PIN_WIRE_SDA, PIN_WIRE_SCL);
 
 OLEDDisplayUi ui     ( &display );
 

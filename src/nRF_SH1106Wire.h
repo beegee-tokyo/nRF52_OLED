@@ -31,7 +31,7 @@
 #ifndef SH1106Wire_h
 #define SH1106Wire_h
 
-#include "OLEDDisplay.h"
+#include <OLEDDisplay.h>
 #include <Wire.h>
 
 #define SH1106_SET_PUMP_VOLTAGE 0X30

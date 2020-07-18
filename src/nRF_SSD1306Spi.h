@@ -31,7 +31,7 @@
 #ifndef SSD1306Spi_h
 #define SSD1306Spi_h
 
-#include "OLEDDisplay.h"
+#include <OLEDDisplay.h>
 #include <SPI.h>
 
 #if F_CPU == 160000000L

@@ -40,7 +40,7 @@
 #error "Unkown operating system"
 #endif
 
-#include "OLEDDisplay.h"
+#include <OLEDDisplay.h>
 
 //#define DEBUG_OLEDDISPLAYUI(...) Serial.printf( __VA_ARGS__ )
 

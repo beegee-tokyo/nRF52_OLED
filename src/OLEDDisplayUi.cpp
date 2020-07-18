@@ -29,7 +29,7 @@
  *
  */
 
-#include "OLEDDisplayUi.h"
+#include <OLEDDisplayUi.h>
 
 void LoadingDrawDefault(OLEDDisplay *display, LoadingStage* stage, uint8_t progress) {
       display->setTextAlignment(TEXT_ALIGN_CENTER);

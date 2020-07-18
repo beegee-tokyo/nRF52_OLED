@@ -31,7 +31,7 @@
 #ifndef SH1106Spi_h
 #define SH1106Spi_h
 
-#include "OLEDDisplay.h"
+#include <OLEDDisplay.h>
 #include <SPI.h>
 
 class SH1106Spi : public OLEDDisplay {

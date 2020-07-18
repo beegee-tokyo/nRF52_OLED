@@ -31,7 +31,7 @@
 #ifndef SSD1306Wire_h
 #define SSD1306Wire_h
 
-#include "OLEDDisplay.h"
+#include <OLEDDisplay.h>
 #include <Wire.h>
 
 // #ifdef ARDUINO_ARCH_AVR

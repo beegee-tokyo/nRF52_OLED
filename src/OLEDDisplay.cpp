@@ -35,7 +35,7 @@
   * - Finish _putc with drawLogBuffer when running display
   */
 
-#include "OLEDDisplay.h"
+#include <OLEDDisplay.h>
 
 OLEDDisplay::OLEDDisplay() {
 

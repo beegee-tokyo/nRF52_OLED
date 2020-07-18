@@ -61,7 +61,7 @@ private:
 #error "Unkown operating system"
 #endif
 
-#include "OLEDDisplayFonts.h"
+#include <OLEDDisplayFonts.h>
 
 //#define DEBUG_OLEDDISPLAY(...) Serial.printf( __VA_ARGS__ )
 //#define DEBUG_OLEDDISPLAY(...) dprintf("%s",  __VA_ARGS__ )

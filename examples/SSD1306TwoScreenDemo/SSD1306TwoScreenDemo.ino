@@ -30,12 +30,12 @@
 // Include the correct display library
 // For a connection via I2C using Wire include
 #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
-#include "nRF_SSD1306Wire.h" // legacy include: `#include "nRF_SSD1306.h"`
+#include <nRF_SSD1306Wire.h> // legacy include: `#include <nRF_SSD1306.h>`
 #include "images.h"
 
-// Initialize the OLED display using Wire library
-SSD1306Wire  display(0x3c, D3, D5);
-SSD1306Wire  display2(0x3c, D1, D2);
+// Initialize the two OLED displays using Wire library
+SSD1306Wire display(0x3c, PIN_WIRE_SDA, PIN_WIRE_SCL);
+SSD1306Wire display2(0x3c, 45, 46);
 
 void setup() {
   Serial.begin(115200);
