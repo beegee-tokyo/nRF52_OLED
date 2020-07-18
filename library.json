@@ -1,0 +1,23 @@
+{
+  "name": "nRF52_OLED",
+  "version": "1.0.0",
+  "keywords": "ssd1306, oled, display, i2c, spi",
+  "description": "An I2C/SPI display driver for SSD1306/SH1106 oled displays connected to an nRF52",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/beegee-tokyo/nRF52_OLED.git"
+  },
+  "authors":
+  [
+    {
+        "name": "Bernd Giesecke",
+        "email": "beegee@giesecke.tk",
+        "url": "https://www.desire.giesecke.tk"
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": [
+    "nordicnrf52"
+  ]
+}
