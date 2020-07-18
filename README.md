@@ -4,6 +4,7 @@
 
 ## Based on the [ESP8266_SSD1306](https://github.com/squix78/esp8266-oled-ssd1306.git) V4.0.0 library written by Daniel Eichhorn & Fabrice Weinberg
 ## Adapted to work with nRF52 by Bernd Giesecke
+## SPI version is not tested on nRF52 because I have no SPI OLED display.
 
 This is a driver for the SSD1306 and SH1106 based 128x64 or 128x32 pixel OLED displays running on the Arduino/nRF52 platform.
 Can be used with either the I2C or SPI version of the display
