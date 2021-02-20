@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.com/beegee-tokyo/nRF52_OLED.svg?branch=master)](https://travis-ci.com/beegee-tokyo/nRF52_OLED)
-
+<!--[![Build Status](https://travis-ci.com/beegee-tokyo/nRF52_OLED.svg?branch=master)](https://travis-ci.com/beegee-tokyo/nRF52_OLED)-->
+[![Build Status](https://github.com/beegee-tokyo/nRF52_OLED/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/beegee-tokyo/nRF52_OLED/actions)
 # nRF52 OLED SSD1306 SH1106
 
 ## Based on the [ESP8266_SSD1306](https://github.com/squix78/esp8266-oled-ssd1306.git) V4.0.0 library written by Daniel Eichhorn & Fabrice Weinberg
