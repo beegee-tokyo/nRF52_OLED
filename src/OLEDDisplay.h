@@ -137,8 +137,10 @@ enum OLEDDISPLAY_TEXT_ALIGNMENT {
 
 enum OLEDDISPLAY_GEOMETRY {
   GEOMETRY_128_64   = 0,
-  GEOMETRY_128_32,
-  GEOMETRY_RAWMODE,
+  GEOMETRY_128_32   = 1,
+  GEOMETRY_64_48    = 2,
+  GEOMETRY_64_32    = 3,
+  GEOMETRY_RAWMODE  = 4
 };
 
 typedef char (*FontTableLookupFunction)(const uint8_t ch);
@@ -208,6 +210,12 @@ class OLEDDisplay : public Stream {
     // Fill circle
     void fillCircle(int16_t x, int16_t y, int16_t radius);
 
+    // Draw an empty triangle i.e. only the outline
+    void drawTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2);
+
+    // Draw a solid triangle i.e. filled
+    void fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2);
+
     // Draw a line horizontally
     void drawHorizontalLine(int16_t x, int16_t y, int16_t length);
 
@@ -231,6 +239,9 @@ class OLEDDisplay : public Stream {
 
     // Draws a string at the given location
     void drawString(int16_t x, int16_t y, String text);
+
+    // Draws a formatted string (like printf) at the given location
+    void drawStringf(int16_t x, int16_t y, char* buffer, String format, ... );
 
     // Draws a String with a maximum width at the given location.
     // If the given String is wider than the specified width

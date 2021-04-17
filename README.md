@@ -161,6 +161,12 @@ void drawCircle(int16_t x, int16_t y, int16_t radius);
 // Fill circle
 void fillCircle(int16_t x, int16_t y, int16_t radius);
 
+// Draw an empty triangle i.e. only the outline
+void drawTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2);
+
+// Draw a solid triangle i.e. filled
+void fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2);
+
 // Draw a line horizontally
 void drawHorizontalLine(int16_t x, int16_t y, int16_t length);
 
@@ -181,7 +187,12 @@ void drawXbm(int16_t x, int16_t y, int16_t width, int16_t height, const char* xb
 ## Text operations
 
 ``` C++
+// Draws a String at the given location.
 void drawString(int16_t x, int16_t y, String text);
+
+// Draws a String at the given location.
+// The String parameters are like the printf() function and takes same formatting.
+void OLEDDisplay::drawStringf( int16_t x, int16_t y, char* buffer, String format, ... );
 
 // Draws a String with a maximum width at the given location.
 // If the given String is wider than the specified width

@@ -1,6 +1,6 @@
 {
   "name": "nRF52_OLED",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": "ssd1306, oled, display, i2c, spi",
   "description": "An I2C/SPI display driver for SSD1306/SH1106 oled displays connected to an nRF52",
   "repository":

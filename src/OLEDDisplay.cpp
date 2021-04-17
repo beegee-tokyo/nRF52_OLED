@@ -302,6 +302,90 @@ void OLEDDisplay::fillCircle(int16_t x0, int16_t y0, int16_t radius) {
 
 }
 
+void OLEDDisplay::drawTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1,
+                               int16_t x2, int16_t y2) {
+  drawLine(x0, y0, x1, y1);
+  drawLine(x1, y1, x2, y2);
+  drawLine(x2, y2, x0, y0);
+}
+
+void OLEDDisplay::fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1,
+                               int16_t x2, int16_t y2) {
+  int16_t a, b, y, last;
+
+  if (y0 > y1) {
+    _swap_int16_t(y0, y1);
+    _swap_int16_t(x0, x1);
+  }
+  if (y1 > y2) {
+    _swap_int16_t(y2, y1);
+    _swap_int16_t(x2, x1);
+  }
+  if (y0 > y1) {
+    _swap_int16_t(y0, y1);
+    _swap_int16_t(x0, x1);
+  }
+
+  if (y0 == y2) {
+    a = b = x0;
+    if (x1 < a) {
+      a = x1;
+    } else if (x1 > b) {
+      b = x1;
+    }
+    if (x2 < a) {
+      a = x2;
+    } else if (x2 > b) {
+      b = x2;
+    }
+    drawHorizontalLine(a, y0, b - a + 1);
+    return;
+  }
+
+  int16_t
+    dx01 = x1 - x0,
+    dy01 = y1 - y0,
+    dx02 = x2 - x0,
+    dy02 = y2 - y0,
+    dx12 = x2 - x1,
+    dy12 = y2 - y1;
+  int32_t
+    sa   = 0,
+    sb   = 0;
+
+  if (y1 == y2) {
+    last = y1; // Include y1 scanline
+  } else {
+    last = y1 - 1; // Skip it
+  }
+
+  for (y = y0; y <= last; y++) {
+    a = x0 + sa / dy01;
+    b = x0 + sb / dy02;
+    sa += dx01;
+    sb += dx02;
+
+    if (a > b) {
+      _swap_int16_t(a, b);
+    }
+    drawHorizontalLine(a, y, b - a + 1);
+  }
+
+  sa = dx12 * (y - y1);
+  sb = dx02 * (y - y0);
+  for (; y <= y2; y++) {
+    a = x1 + sa / dy12;
+    b = x0 + sb / dy02;
+    sa += dx12;
+    sb += dx02;
+
+    if (a > b) {
+      _swap_int16_t(a, b);
+    }
+    drawHorizontalLine(a, y, b - a + 1);
+  }
+}
+
 void OLEDDisplay::drawHorizontalLine(int16_t x, int16_t y, int16_t length) {
   if (y < 0 || y >= this->height()) { return; }
 
@@ -547,6 +631,15 @@ void OLEDDisplay::drawString(int16_t xMove, int16_t yMove, String strUser) {
     textPart = strtok(NULL, "\n");
   }
   free(text);
+}
+
+void OLEDDisplay::drawStringf( int16_t x, int16_t y, char* buffer, String format, ... )
+{
+  va_list myargs;
+  va_start(myargs, format);
+  vsprintf(buffer, format.c_str(), myargs);
+  va_end(myargs);
+  drawString( x, y, buffer );
 }
 
 void OLEDDisplay::drawStringMaxWidth(int16_t xMove, int16_t yMove, uint16_t maxLineWidth, String strUser) {
@@ -845,6 +938,14 @@ void OLEDDisplay::setGeometry(OLEDDISPLAY_GEOMETRY g, uint16_t width, uint16_t h
     	this->displayWidth = 128;
     	this->displayHeight = 32;
 		break;
+    case GEOMETRY_64_48:
+      this->displayWidth = 64;
+      this->displayHeight = 48;
+      break;
+    case GEOMETRY_64_32:
+      this->displayWidth = 64;
+      this->displayHeight = 32;
+      break;
 	case GEOMETRY_RAWMODE:
 		this->displayWidth = width > 0 ? width : 128;
 		this->displayHeight = height > 0 ? height : 64;
@@ -863,6 +964,9 @@ void OLEDDisplay::sendInitCommands(void) {
   sendCommand(this->height() - 1);
   sendCommand(SETDISPLAYOFFSET);
   sendCommand(0x00);
+  if(geometry == GEOMETRY_64_32)
+    sendCommand(0x00);
+  else
   sendCommand(SETSTARTLINE);
   sendCommand(CHARGEPUMP);
   sendCommand(0x14);
@@ -872,7 +976,7 @@ void OLEDDisplay::sendInitCommands(void) {
   sendCommand(COMSCANINC);
   sendCommand(SETCOMPINS);
 
-  if (geometry == GEOMETRY_128_64) {
+  if (geometry == GEOMETRY_128_64 || geometry == GEOMETRY_64_48 || geometry == GEOMETRY_64_32) {
     sendCommand(0x12);
   } else if (geometry == GEOMETRY_128_32) {
     sendCommand(0x02);
@@ -880,7 +984,7 @@ void OLEDDisplay::sendInitCommands(void) {
 
   sendCommand(SETCONTRAST);
 
-  if (geometry == GEOMETRY_128_64) {
+  if (geometry == GEOMETRY_128_64 || geometry == GEOMETRY_64_48 || geometry == GEOMETRY_64_32) {
     sendCommand(0xCF);
   } else if (geometry == GEOMETRY_128_32) {
     sendCommand(0x8F);
