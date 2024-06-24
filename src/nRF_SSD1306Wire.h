@@ -46,7 +46,7 @@ private:
 	uint8_t _sda;
 	uint8_t _scl;
 	bool _doI2cAutoInit = false;
-	TwoWire * _i2cWire;
+	TwoWire *_i2cWire;
 
 public:
 	SSD1306Wire(uint8_t _address, uint8_t _sda, uint8_t _scl, OLEDDISPLAY_GEOMETRY g = GEOMETRY_128_64, TwoWire *i2cWire = &Wire)

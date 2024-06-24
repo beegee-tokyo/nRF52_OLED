@@ -35,5 +35,4 @@
 // For make SH1106 an alias for SH1106Wire
 typedef SH1106Wire SH1106;
 
-
 #endif

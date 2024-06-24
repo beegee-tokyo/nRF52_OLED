@@ -6,6 +6,8 @@
 ## Adapted to work with nRF52 by Bernd Giesecke
 ## SPI version is not tested on nRF52 because I have no SPI OLED display.
 
+### Runs as well with ESP32, RP2040, STM32WLE5 (tested with RAK4631, RAK11200, RAK11310, RAK3372)
+
 This is a driver for the SSD1306 and SH1106 based 128x64 or 128x32 pixel OLED displays running on the Arduino/nRF52 platform.
 Can be used with either the I2C or SPI version of the display
 
